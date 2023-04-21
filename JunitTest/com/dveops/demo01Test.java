@@ -1,9 +1,5 @@
 package com.dveops;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 public class demo01Test {
 
 	@Test

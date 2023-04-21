@@ -31,3 +31,9 @@ Github的使用
 -bash-3.2$ git add .
 -bash-3.2$ git commit -m "First commit"
 -bash-3.2$ git push
+
+
+
+ISSUE:How to fix Maven build issue in Eclipse? Perform maven-clean-install to fix any Java Dependency Issue
+
+https://crunchify.com/mavenmvn-clean-install-update-project-and-project-clean-options-in-eclipse-ide-to-fix-any-dependency-issue/
