@@ -8,6 +8,7 @@ public class AppTest {
         int b = 3;
         int expected = 5;
         int result = MyClass.add(a, b);
+//      int result = MyClass.add(a:2, b:3);
         assertEquals(expected, result);
     }
 
