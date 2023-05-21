@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                dir("${env.WORKSPACE}/"){
+                dir("${env.WORKSPACE}/dot503"){
                     echo "Cleaning the workspace..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn clean'
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                dir("${env.WORKSPACE}/"){
+                dir("${env.WORKSPACE}/dot503"){
                     echo "Running tests..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn test'
@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Deploy Package') {
             steps {
-                dir("${env.WORKSPACE}/"){
+                dir("${env.WORKSPACE}/dot503"){
                     echo "Creating the JAR file..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn package -DskipTests'
