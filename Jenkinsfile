@@ -1,6 +1,9 @@
 pipeline {
     agent any
     // Add a tool configuration here...
+    tools {
+      maven 'Maven-3.9.2'
+    }
     stages {
         stage('Source') {
             steps {
@@ -15,7 +18,7 @@ pipeline {
                 dir("${env.WORKSPACE}/"){
                     echo "Cleaning the workspace..."
                     // Uncomment the following line after Maven is configured as a global tool
-                    // sh 'mvn clean'
+                    sh 'mvn clean'
                 }
             }
         }
@@ -24,16 +27,16 @@ pipeline {
                 dir("${env.WORKSPACE}/"){
                     echo "Running tests..."
                     // Uncomment the following line after Maven is configured as a global tool
-                    // sh 'mvn test'
+                    sh 'mvn test'
                 }
             }
         }
-        stage('Package') {
+        stage('Deploy Package') {
             steps {
                 dir("${env.WORKSPACE}/"){
                     echo "Creating the JAR file..."
                     // Uncomment the following line after Maven is configured as a global tool
-                    // sh 'mvn package -DskipTests'
+                    sh 'mvn package -DskipTests'
                 }
             }
         }
