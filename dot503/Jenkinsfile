@@ -5,7 +5,7 @@ pipeline {
       maven 'Maven-3.9.2'
     }
     stages {
-        stage('Source') {
+        stage('Build&Compile') {
             steps {
                 git branch: 'main',
                     changelog: false,
