@@ -5,23 +5,14 @@ pipeline {
       maven 'Maven-3.9.2'
     }
     stages {
-        stage('Build&Compile') {
+        stage('Build') {
             steps {
                 git branch: 'main',
                     changelog: false,
                     poll: false,
                     url: 'https://github.com/Jssice/DevOpsTools.git'
             }
-        }
-//         stage('Clean') {
-//             steps {
-//                 dir("${env.WORKSPACE}/dot3"){
-//                     echo "Cleaning the workspace..."
-//                     // Uncomment the following line after Maven is configured as a global tool
-//                     sh 'mvn clean'
-//                 }
-//             }
-//         }
+
         stage('Test') {
             steps {
                 dir("${env.WORKSPACE}/dot3"){
