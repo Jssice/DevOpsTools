@@ -9,20 +9,21 @@ pipeline {
         stage('Compiling') {
             steps {
                 git branch: 'main',
-                    changelog: false,
-                    poll: false,
-                    url: 'https://github.com/Jssice/DevOpsTools.git'
+                changelog: false,
+                poll: false,
+                url: 'https://github.com/Jssice/DevOpsTools.git',
+                sh:'./mvnw clean compile'
             }
         }
-        stage('Cleaning') {
-            steps {
-                dir("${env.WORKSPACE}/src/test/java"){
-                    echo "Cleaning the workspace..."
-                    // Uncomment the following line after Maven is configured as a global tool
-                    // sh 'mvn clean'
-                }
-            }
-        }
+        // stage('Cleaning') {
+        //     steps {
+        //         dir("${env.WORKSPACE}/src/test/java"){
+        //             echo "Cleaning the workspace..."
+        //             // Uncomment the following line after Maven is configured as a global tool
+        //             // sh 'mvn clean'
+        //         }
+        //     }
+        // }
         stage('Testing') {
             steps {
                 dir("${env.WORKSPACE}/src/test/java"){
@@ -46,9 +47,9 @@ pipeline {
         always {
             echo "Collecting jUnit test results..."
             // Add jUnit report collection here...
-            junit allowEmptyResults: true, 
-                testResults: '**/TEST-com.learningjenkins.AppTest.xml'
-            
+            //junit allowEmptyResults: true, 
+                //testResults: '**/TEST-com.learningjenkins.AppTest.xml'
+            junit(testResults: '**.surefire-reports/**/*.xml')    
             echo "Archiving the JAR file..."
             // Add artifact archiving here...
             archiveArtifacts allowEmptyArchive: true, 
