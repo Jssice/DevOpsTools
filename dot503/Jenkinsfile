@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                dir("${env.WORKSPACE}/dot503"){
+                dir("${env.WORKSPACE}/dot3"){
                     echo "Cleaning the workspace..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn clean'
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                dir("${env.WORKSPACE}/dot503"){
+                dir("${env.WORKSPACE}/dot3"){
                     echo "Running tests..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn test'
@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Deploy Package') {
             steps {
-                dir("${env.WORKSPACE}/dot503"){
+                dir("${env.WORKSPACE}/dot3"){
                     echo "Creating the JAR file..."
                     // Uncomment the following line after Maven is configured as a global tool
                     sh 'mvn package -DskipTests'
@@ -43,18 +43,10 @@ pipeline {
     }
     post {
         always {
-//             junit allowEmptyResults: true, testResults: '**/pytest_junit.xml'
-//             junit allowEmptyResults: true, testResults: '**/pylint_junit.xml'
-//             publishCoverage adapters: [cobertura('**/coverage.xml')],
-//                 sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
-            
+
             echo "Collecting jUnit test results..."
             // Add jUnit report collection here...
-            junit allowEmptyResults: true, 
-                //testResults: '**/TEST-com.learningjenkins.AppTest.xml'
-                testResults: '**/TEST.AppTest.xml'
-            publishCoverage adapters: [cobertura('**/TEST.coverage.xml')],
-                sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
+	    junit allowEmptyResults: true, testResults: '**/TEST-main.java.AppTest.java'
             
             echo "Archiving the JAR file..."
             // Add artifact archiving here...
