@@ -13,8 +13,7 @@ pipeline {
                 poll: false,
                 url: 'https://github.com/Jssice/DevOpsTools.git',
 //                 sh:'./mvnw clean compile'
-            }
-        }
+             }
         // stage('Cleaning') {
         //     steps {
         //         dir("${env.WORKSPACE}/src/test/java"){
