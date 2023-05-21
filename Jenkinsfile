@@ -11,7 +11,7 @@ pipeline {
                 git branch: 'main',
                 changelog: false,
                 poll: false,
-                url: 'https://github.com/Jssice/DevOpsTools.git',
+                url: 'https://github.com/Jssice/DevOpsTools.git'
 //                 sh:'./mvnw clean compile'
              }
         // stage('Cleaning') {
