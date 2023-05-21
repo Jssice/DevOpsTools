@@ -12,7 +12,7 @@ pipeline {
                 changelog: false,
                 poll: false,
                 url: 'https://github.com/Jssice/DevOpsTools.git',
-                sh:'./mvnw clean compile'
+//                 sh:'./mvnw clean compile'
             }
         }
         // stage('Cleaning') {
