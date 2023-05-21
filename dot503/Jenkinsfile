@@ -5,14 +5,14 @@ pipeline {
       maven 'Maven-3.9.2'
     }
     stages {
-        stage('Build') {
+        stage('Build&Compile') {
             steps {
                 git branch: 'main',
                     changelog: false,
                     poll: false,
                     url: 'https://github.com/Jssice/DevOpsTools.git'
             }
-
+        }
         stage('Test') {
             steps {
                 dir("${env.WORKSPACE}/dot3"){
